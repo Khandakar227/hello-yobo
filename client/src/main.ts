@@ -8,6 +8,8 @@ const waitlistForm = document.getElementById("waitlist-form") as HTMLFormElement
 const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
 const responseMsg = document.getElementById("response-msg") as HTMLParagraphElement;
 
+const serverURL = "https://hello-yobo-server.onrender.com";
+
 waitlistForm.onsubmit = async (e: SubmitEvent) => {
   e.preventDefault();
   
@@ -18,13 +20,13 @@ waitlistForm.onsubmit = async (e: SubmitEvent) => {
   submitBtn.innerText = "Please wait";
   submitBtn.disabled = true;
 
-  addToWaitlist(data as WaitListUserProps).then((res) => {
+  addToWaitlist(data as WaitListUserProps)
+  .then((res) => {
     if (res.error) notify(res.message, 'error');
     else {
       (e.target as HTMLFormElement).reset();
       notify("Thank you for joining our waitlist, We'll notify you as soon", 'success')
     }
-
     submitBtn.disabled = false;
     submitBtn.innerText = "Submit";
   });
@@ -37,7 +39,7 @@ async function addToWaitlist(data: WaitListUserProps) {
     body: JSON.stringify(data),
   };
 
-  return fetch("http://localhost:8001/add-to-waitlist", options)
+  return fetch(`${serverURL}/add-to-waitlist`, options)
     .then((response) => response.json())
     .then((response) => response)
     .catch((err) => err);
