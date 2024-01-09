@@ -17,15 +17,15 @@ function initDB() {
  * @param {string} email 
  */
 function insertUser(name, email) {
-   return new Promise((resolve, reject) => {
-       db.run(`INSERT INTO WaitlistUsers (name, email) VALUES (?, ?)`, [name, email], (err) => {
-           if(err) {
-               console.log('Error inserting user: ', err.message);
-               reject(err.message)
-           }
-           resolve("")
-       });
-   })
+    return new Promise((resolve, reject) => {
+        db.run(`INSERT INTO WaitlistUsers (name, email) VALUES (?, ?)`, [name, email], (err) => {
+            if (err) {
+                console.log('Error inserting user: ', err.message);
+                reject(err.message)
+            }
+            resolve("")
+        });
+    })
 }
 
 module.exports = {

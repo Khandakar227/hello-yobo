@@ -40,8 +40,8 @@
             <form id="waitlist-form" class="py-12 max-w-md mx-auto">
               <input
                 type="text"
-                name="username"
-                id="username"
+                name="name"
+                id="name"
                 placeholder="Your Name"
                 class="w-full hover:outline-sky-500 outline-none p-2 border shadow-sm"
               />
@@ -52,7 +52,11 @@
               placeholder="Your Email"
               class="w-full my-4 hover:outline-sky-500 outline-none p-2 border shadow-sm"
             />
-            <button class="hover:bg-cyan-600 hover:text-white px-6 py-2 shadow font-bold text-xl bg-white"> Submit </button>
+            <p id="response-msg" style="padding: 10px 8px;" class="rounded-lg"></p>
+            <button
+              id="submit-btn"
+              class="hover:bg-cyan-600 my-4 hover:text-white px-6 py-2 shadow font-bold text-xl bg-white"
+              > Submit </button>
             </form>
   
             <div class="flex justify-center items-center gap-8">

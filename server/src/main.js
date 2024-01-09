@@ -14,10 +14,23 @@ const PORT = process.env.PORT;
  * @param {import("http").ServerResponse} res 
  */
 function requestHandler(req, res) {
+    // Set CORS headers
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Request-Method', '*');
+	res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+	res.setHeader('Access-Control-Allow-Headers', '*');
+
     switch (req.method) {
+        case 'OPTIONS':
+            res.writeHead(200);
+		    res.end();
+            break;
         case 'POST':
             if(req.url == '/add-to-waitlist')
                 addToWaitlist(req, res)
+            break;
+        case 'OPTIONS':
+            res.writeHead(200);
             break;
         default:
             res.writeHead(405, {'Content-Type': 'text/html'})
