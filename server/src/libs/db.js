@@ -28,7 +28,36 @@ function insertUser(name, email) {
     })
 }
 
+/**
+ * @param {(data:string) => void} callback 
+ */
+function getUsers(callback) {
+    db.all(`select id, name, email, submission_date from WaitlistUsers`, [], (err, rows) => {
+        if (err) throw err;
+        let data = `<style>table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 4px;
+          }</style>
+        <table>
+        <tr><td>ID</td><td>Name</td><td>Email</td><td>Submission Date</td></tr>`;
+        rows.forEach(row => {
+            data+="<tr>";
+            
+            data+="<td>"+row.id+"</td>";
+            data+="<td>"+row.name+"</td>";
+            data+="<td>"+row.email+"</td>";
+            data+="<td>"+row.submission_date+"</td>";
+            
+            data+="</tr>";
+        })
+        data += "</table>";
+        callback(data);
+    })
+}
+
 module.exports = {
     initDB,
     insertUser,
+    getUsers,
 }

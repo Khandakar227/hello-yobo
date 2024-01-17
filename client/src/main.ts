@@ -7,8 +7,21 @@ type WaitListUserProps = {
 const waitlistForm = document.getElementById("waitlist-form") as HTMLFormElement;
 const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
 const responseMsg = document.getElementById("response-msg") as HTMLParagraphElement;
+const TaScheckbox = document.getElementById("terms-and-services") as HTMLInputElement;
 
 const serverURL = "https://hello-yobo-server.onrender.com";
+
+TaScheckbox.onchange = (e) => {
+  submitBtn.disabled = !(e.target as HTMLInputElement).checked
+}
+
+// Check terms of services from url query parameters
+const searchParams = new URLSearchParams(window.location.search)
+const toc = searchParams.get("toc");
+if(toc) {
+  TaScheckbox.checked = true;
+  submitBtn.disabled = false;
+}
 
 waitlistForm.onsubmit = async (e: SubmitEvent) => {
   e.preventDefault();

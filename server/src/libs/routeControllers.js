@@ -1,6 +1,8 @@
 const { ServerResponse } = require('http');
-const { insertUser } = require('./db');
+const { insertUser, getUsers } = require('./db');
+const { config } = require('dotenv');
 
+config()
 /**
  * @param {import('http').IncomingMessage} req 
  * @param {import('http').ServerResponse} res 
@@ -32,6 +34,29 @@ function addToWaitlist(req, res) {
         }
     })
 }
+
+
+/**
+ * @param {import('http').IncomingMessage} req 
+ * @param {import('http').ServerResponse} res 
+ */
+function getWaitlist(req, res) {
+    const authorization = req.headers.authorization
+    if(!authorization) {
+        res.writeHead(403)
+        return res.end("Forbidden")
+    }
+    const token = authorization.split(" ")[1]
+    if(token !== process.env.AUTH_TOKEN) {
+        res.writeHead(403)
+        return res.end("Forbidden")
+    }
+    getUsers((data) => {
+        res.writeHead(200, { "Content-type": "text/html" })
+        res.end(data)
+    })
+}
+
 /**
  * @param {string} error
  * @param {import('http').ServerResponse} res 
@@ -44,5 +69,6 @@ function handleWaitlistError(error, res) {
 }
 
 module.exports = {
-    addToWaitlist
+    addToWaitlist,
+    getWaitlist,
 }

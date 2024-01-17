@@ -12,3 +12,11 @@
     width: 200px;
     @apply bg-cyan-500;
 }
+@layer components {
+    .submit-btn {
+        @apply disabled:brightness-75 disabled:hover:bg-white disabled:hover:text-black hover:bg-cyan-600 my-4 hover:text-white px-6 py-2 shadow font-bold text-xl bg-white;
+    }
+    .tos-list li {
+        @apply py-2;
+    }
+}
