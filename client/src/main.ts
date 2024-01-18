@@ -1,4 +1,6 @@
 import "./index.css";
+import Typed from 'typed.js'
+
 type WaitListUserProps = {
   name: string;
   email: string;
@@ -8,6 +10,12 @@ const waitlistForm = document.getElementById("waitlist-form") as HTMLFormElement
 const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
 const responseMsg = document.getElementById("response-msg") as HTMLParagraphElement;
 const TaScheckbox = document.getElementById("terms-and-services") as HTMLInputElement;
+
+new Typed("#subtitle-animate", {
+  strings: ["Sales Robot", "Customer Service Robot"],
+  typeSpeed: 50,
+  loop: true,
+})
 
 const serverURL = "https://hello-yobo-server.onrender.com";
 
