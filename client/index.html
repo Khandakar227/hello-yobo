@@ -9,9 +9,7 @@
 
   <body>
     <div id="app" class="font-mulish">
-      <div
-        class="grid lg:grid-cols-2 gap-2 justify-center items-center min-h-screen min-w-full"
-      >
+      <div class="grid lg:grid-cols-2 gap-2 justify-stretch items-center min-h-screen min-w-full">
       <div class="pb-4 md:pb-0">  
         <h4 class="p-4 mb-3">
           <div class="relative">
@@ -24,24 +22,35 @@
           <span>Your On-Site</span> 
           <span id="subtitle-animate"></span>
         </p>
-        <div width="600" height="400" class="w-full flex justify-center items-center p-4">
-          <iframe
-            style="min-height: 15rem;"
-            class="rounded-2xl w-full max-w-2xl aspect-video"
-            title="Hello Yobo Video"
-            width="600"
-            height="400"
-            src="https://www.youtube.com/embed/ASwzVaVh9BM?autoplay=1&?loop=1"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
+        <div class="p-4">
+          <div id="video-container" width="600" height="400" class="group w-full flex justify-center items-center relative">
+            <div data-name="placeholder-video" class="group-hover:cursor-pointer rounded-2xl group-hover:opacity-100 group-hover:bg-cyan-400 group-hover:bg-opacity-10 opacity-0 absolute z-10 top-0 right-0 bottom-0 left-0 flex justify-center items-center">
+              <img class="w-16 h-auto" width="64" height="64" src="https://img.icons8.com/sf-black-filled/64/22C3E6/play.png" alt="play"/>
+            </div>
+            <video id="yobo-video" loop="true" autoplay="autoplay" muted class="aspect-video shadow border rounded-2xl">
+              <source src="/Intro xs.mp4" type="video/mp4" />
+            </video>
+            <!-- <iframe
+              id="yobo-official"
+              style="min-height: 15rem;display: none;"
+              class="rounded-2xl w-full max-w-2xl aspect-video"
+              title="Hello Yobo Video"
+              width="600"
+              height="400"
+              src="https://www.youtube.com/embed/ASwzVaVh9BM?autoplay=1&?loop=1"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              frameborder="0"
+              allowfullscreen
+            ></iframe> -->
+          </div>
         </div>
+
       </div>
 
         <div class="p-4 pt-12 lg:pt-0 h-full flex justify-center items-center bg-cyan-200">
           <div>
-            <h3 class="text-center text-5xl font-bold">Join our waitlist</h3>
+            <p class="text-center font-semibold text-xl">Want To Hire Me?</p>
+            <h3 class="text-center text-5xl font-bold">Join our waitlist!</h3>
             <form id="waitlist-form" class="py-12 max-w-md mx-auto">
               <input
                 type="text"
@@ -99,6 +108,55 @@
                 </svg>
               </a>
             </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="py-28 mx-auto max-w-5xl px-4">
+        <h2 class="font-bold pb-2 text-4xl">Skills</h2>
+        <hr class="mb-8 pt-1 bg-cyan-400 rounded-lg max-w-36"/>
+        <div class="pb-12">
+
+          <div class="grid gap-4 md:grid-cols-2">
+            <div class="flex flex-col gap-4 pt-12">
+              <div class="p-4 shadow rounded-2xl hover:bg-cyan-400 hover:text-white transition-colors border h-max">
+                <h3 class="text-2xl font-bold">Proactive</h3>
+                <p class="text-lg pb-4">Detects visitors using built-in camera and promotes campaigns</p>
+                <p class="italic text-sm">"Welcome! We’ve got a new winter exhibition going on. Would you like to hear more about it?"</p>
+              </div>
+  
+              <div class="p-4 shadow rounded-2xl hover:bg-cyan-400 hover:text-white transition-colors border h-max">
+                <h3 class="text-2xl font-bold">FAQ</h3>
+                <p class="text-lg pb-4">Instantly provides detailed information on products and services, including inventory, locations, and pricing.</p>
+                <p class="italic text-sm">"Where do you keep the Japanese Mayo?"</p>
+              </div>
+  
+              <div class="p-4 shadow rounded-2xl hover:bg-cyan-400 hover:text-white transition-colors border h-max">
+                <h3 class="text-2xl font-bold">Escalation</h3>
+                <p class="text-lg pb-4">Relays messages or connects with human assistance as needed.</p>
+                <p class="italic text-sm">"David is unavailable at the moment, but I can ensure he gets your message. Want to leave one?"</p>
+              </div>  
+            </div>
+          
+            <div class="flex flex-col gap-4">
+              <div class="p-4 shadow rounded-2xl hover:bg-cyan-400 hover:text-white transition-colors border h-max">
+                <h3 class="text-2xl font-bold">Polyglot</h3>
+                <p class="text-lg pb-4">Fluent in over 10 languages.</p>
+                <p class="italic text-sm">"Communicate with me in English, French, Mandarin, Hindi and more"</p>
+              </div>
+  
+              <div class="p-4 shadow rounded-2xl hover:bg-cyan-400 hover:text-white transition-colors border h-max">
+                <h3 class="text-2xl font-bold">Recommendation</h3>
+                <p class="text-lg pb-4">Tailors suggestions based on preferences.</p>
+                <p class="italic text-sm">"You can tell me the kind of art you’re looking for and I can recommend something you might like"</p>
+              </div>
+  
+              <div class="p-4 shadow rounded-2xl hover:bg-cyan-400 hover:text-white transition-colors border h-max">
+                <h3 class="text-2xl font-bold">Growth</h3>
+                <p class="text-lg pb-4">Actively builds leads list by collecting contact information from visitors.</p>
+                <p class="italic text-sm">"We usually have new exhibitions every month, would you like to stay in touch?"</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
