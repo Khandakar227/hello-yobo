@@ -1,8 +1,13 @@
+//@ts-check
 const { ServerResponse } = require('http');
 const { insertUser, getUsers } = require('./db');
 const { config } = require('dotenv');
+const fs = require("fs");
+const path = require("path");
+
 
 config()
+
 /**
  * @param {import('http').IncomingMessage} req 
  * @param {import('http').ServerResponse} res 

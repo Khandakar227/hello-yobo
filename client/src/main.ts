@@ -9,6 +9,12 @@ type WaitListUserProps = {
 const waitlistForm = document.getElementById(
   "waitlist-form"
 ) as HTMLFormElement;
+const usernameInput = document.getElementById(
+  "username"
+) as HTMLInputElement;
+const userEmailInput = document.getElementById(
+  "useremail"
+) as HTMLInputElement;
 const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
 const responseMsg = document.getElementById(
   "response-msg"
@@ -43,6 +49,22 @@ const toc = searchParams.get("toc");
 if (toc) {
   TaScheckbox.checked = true;
   submitBtn.disabled = false;
+
+  const userName = localStorage.getItem('name');
+  const userEmail = localStorage.getItem('email');
+  
+  if (userName) usernameInput.value = userName || '';
+  if (userEmail) userEmailInput.value = userEmail || '';
+}
+
+usernameInput.onchange=(e)=>{
+  if (!(e.target as HTMLInputElement)?.value) return;
+  localStorage.setItem("name", (e.target as HTMLInputElement).value)
+}
+
+userEmailInput.onchange=(e)=>{
+  if (!(e.target as HTMLInputElement)?.value) return;
+  localStorage.setItem("email", (e.target as HTMLInputElement).value)
 }
 
 waitlistForm.onsubmit = async (e: SubmitEvent) => {
@@ -60,12 +82,14 @@ waitlistForm.onsubmit = async (e: SubmitEvent) => {
     else {
       (e.target as HTMLFormElement).reset();
       notify(
-        "Thank you for joining our waitlist, We'll notify you as soon",
+        "Thank you for joining our waitlist, We'll notify you soon",
         "success"
       );
     }
+
     submitBtn.disabled = false;
     submitBtn.innerText = "Submit";
+    localStorage.clear();
   });
 };
 

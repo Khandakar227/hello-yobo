@@ -1,7 +1,7 @@
 //@ts-check
 const http = require("http");
 const dotenv = require('dotenv');
-const { addToWaitlist, getWaitlist } = require("./libs/routeControllers");
+const { addToWaitlist, getWaitlist, getHome } = require("./libs/routeControllers");
 const { initDB } = require("./libs/db");
 
 dotenv.config();
@@ -30,9 +30,11 @@ function requestHandler(req, res) {
                 addToWaitlist(req, res)
             break;
         case 'GET':
-            if (req.url == '/get-waitlist')
+            if (req.url == '/')
+                getHome(req, res)
+            else if (req.url == '/get-waitlist')
                 getWaitlist(req, res)
-            break;
+            break
         default:
             res.writeHead(405, { 'Content-Type': 'text/html' })
             res.end("Method not allowed");
